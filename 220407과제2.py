@@ -32,8 +32,8 @@ while(1):
         print("t2 승리")
         a = "t2"
         break
-
+    
 if(text == a):
     print("맞췄습니다.")
-else:
+elif(text != a):
     print("틀렸습니다.")

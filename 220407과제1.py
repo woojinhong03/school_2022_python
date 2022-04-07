@@ -4,22 +4,40 @@ Created on Thu Apr  7 14:15:29 2022
 
 @author: wooji
 """
-import random
-t1 = 0
-t2 = 0
+import turtle
+t1 = turtle.Turtle()
+t1.shape('turtle')
+t1.color('blue')
 
-while(1):
-    t1 += random.randint(1,6)
-    t2 += random.randint(1,6)
-    
-    print("t1: ",t1," vs t2: ",t2)
-    
-    if(t1 >= 30 and t2 >= 30):
-        print("무승부")
-        break
-    elif(t1 >= 30):
-        print("t1 승리")
-        break
-    elif(t2 >= 30):
-        print("t2 승리")
-        break
+t2 = turtle.Turtle()
+t2.shape('turtle')
+t2.color('green')
+
+t3 = turtle.Turtle()
+t3.shape('turtle')
+t3.color('red')
+
+def square(t):
+    for i in range(4):
+        t.fd(100)
+        t.left(90)    
+
+t1.up()
+t1.goto(0,100)
+t1.down()
+square(t1)
+
+t2.up()
+t2.goto(300,0)
+t2.down()
+square(t2)
+
+t3.up()
+t3.goto(0,-200)
+t3.down()
+square(t3)
+
+
+turtle.exitonclick()
+turtle.bye()
+

@@ -14,6 +14,7 @@ size1 = 200
 size2 = 50
 move_length = 10
 t.dot(size1*2, "green")
+font_a = ("굴림",20)
 
 
 while(1):
@@ -22,10 +23,10 @@ while(1):
      
     def key_Right():
         t.undo()
-        t.dot(size1*2, "green")
         t.fd(move_length)
         print("key_Right")
-        print("위치: ",t.pos())
+        t.write("위치: ")
+        t.write(t.pos(), font = font_a)
         print("거리: ", t.distance(0,0))
         t.dot(size2*2, 'blue')
         if(d == 0):
@@ -45,7 +46,6 @@ while(1):
     
     def mclick(x,y):
         t.undo()
-        t.dot(size1*2, "green")
         t.goto(x, y)
         print("click", x, y)
         print("위치: ",t.pos())
