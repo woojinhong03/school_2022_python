@@ -10,6 +10,7 @@ import random
 
 text = turtle.textinput("주사위게임", "t1 or t2")
 
+
 t1 = 0
 t2 = 0
 
