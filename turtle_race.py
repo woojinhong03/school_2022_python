@@ -30,7 +30,7 @@ while(True):
     else:
         continue
 
-while(t1r < 300 or t2r < 300):
+while(t1r < 300 and t2r < 300):
     
     t1m = random.randint(1,5)
     t2m = random.randint(1,5)
@@ -44,10 +44,10 @@ while(t1r < 300 or t2r < 300):
     print("t1: ",t1r," vs t2: ",t2r)
     
 if(t1r >= t2r):
-    t1.write("승리")
+    t1.write("승리", font=("굴림",20))
     win = "파랑"
 else:
-    t2.write("승리")
+    t2.write("승리", font=("굴림",20))
     win = "빨강"
     
 if(text == win):
