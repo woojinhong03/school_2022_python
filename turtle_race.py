@@ -2,7 +2,6 @@
 """
 Created on Sun Apr 10 20:03:34 2022
 
-@author: wooji
 """
 import random
 import turtle
@@ -16,9 +15,13 @@ t2 = turtle.Turtle()
 t2.shape("turtle")
 
 t1.color("blue")
+t1.up()
 t1.goto(0,200)
+t1.down()
 t2.color("red")
+t2.up()
 t2.goto(0,-200)
+t2.down()
 
 t1r = 0
 t2r = 0
@@ -32,8 +35,8 @@ while(True):
 
 while(t1r < 300 and t2r < 300):
     
-    t1m = random.randint(1,5)
-    t2m = random.randint(1,5)
+    t1m = random.randint(1,10)
+    t2m = random.randint(1,10)
     
     t1.fd(t1m)
     t2.fd(t2m)
