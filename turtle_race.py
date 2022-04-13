@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Apr 10 20:03:34 2022
-
 """
 import random
 import turtle
