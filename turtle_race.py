@@ -58,4 +58,5 @@ else:
     t.write("예측 실패")
 
 turtle.exitonclick()
+
 turtle.bye()
