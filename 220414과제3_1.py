@@ -19,6 +19,7 @@ bts = ["슈가", 174, 57,
        "RM", 181, 70]
 
 def bts_sort(bts, a):
+    
     if (a == "name"):
         for i in range(0,21,3):
             name.append(bts[i])
