@@ -18,6 +18,7 @@ def don(mon,nara):
         print("잘못된 국가 연합입니다.")
         return 0
     
+    
 while(1):
     mon = float(turtle.textinput("환전계산","KRW"))
     nara = turtle.textinput("환전계산", "국가")
