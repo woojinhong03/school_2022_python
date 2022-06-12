@@ -14,29 +14,69 @@ img_width = imgShuttle.get_width()
 img_height = imgShuttle.get_height()
 
 clock = pygame.time.Clock()
+
 startTime = time.time()
 
-loc_rock = [100,100]
-size_rock = 10
+
 
 loc_ship = [sw/2,sh/2]
-size_ship = 20
+size_ship = 25
+
+loc_rock = [[210,210],
+            [210,210],
+            [430,160],
+            [210,210],
+            [210,210]]
+
+vel=[[5,5],
+    [5,-5],
+    [-5,-5],
+    [-5,5],
+    [4,-4]]
+
+size_rock = 10
 
 myFont = pygame.font.SysFont("arial",30,True,False)
-def collision_check(loc_rock, size_rock, loc_ship, size_ship):
-    dist_x = loc_rock[0] - loc_ship[0]
-    dist_y = loc_rock[1] - loc_ship[1]
+
+def collision_check(loc_rock,size_rock,loc_ship,size_ship):
+    dist_x = loc_rock[0][0] - loc_ship[0]
+    dist_y = loc_rock[1][1] - loc_ship[1]
     dist = (dist_x**2 + dist_y**2)**(0.5)
     
     if dist < (size_rock + size_ship):
-        collision_text = myFont.render("Collision",1,(255,0,0))
-        screen.blit(collision_text,[20,20])
+        time_diff = str(time.time() - startTime)
+        print("생존 시간 : ",time_diff[:4],"초")
+        pygame.quit() 
+        sys.exit()
 
-vel = [4,4]
 
 while True:
     clock.tick(30)
     screen.fill((0,0,0))
+    
+    for i in range(len(loc_rock)):
+        pygame.draw.circle(screen, 	(234, 215, 42), loc_rock[i], size_rock,2)
+        x = loc_rock[i][0] - img_width/2
+        y = loc_rock[i][1] - img_height/2
+    
+    for i in range(len(loc_rock)):
+
+        loc_rock[i][0]+=vel[i][0]
+        loc_rock[i][1]+=vel[i][1]
+
+        if loc_rock[i][0] >= sw:
+            vel[i][0] = -vel[i][0]
+            
+        if loc_rock[i][0] <= 0:
+            vel[i][0] = -vel[i][0]       
+        
+        if loc_rock[i][1] >= sh:
+            vel[i][1] = -vel[i][1]
+        
+        if loc_rock[i][1] <= 0:
+            vel[i][1] = -vel[i][1]
+        
+        collision_check(loc_rock, size_rock, loc_ship, size_ship)
     
     keys = pygame.key.get_pressed()
     
@@ -52,21 +92,19 @@ while True:
         pygame.quit()
         sys.exit()
         
-    
-    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-            
-    pygame.draw.circle(screen, (0,255,0), loc_rock, size_rock, 2)
-    pygame.draw.circle(screen, (255,255,255), loc_ship, size_ship, 2)
+     
+    time_diff = str(time.time() - startTime)
     
+    currenTime_text = myFont.render(time_diff[:4], 1, (255, 255, 255)) # 글씨 내용 저장
+    screen.blit(currenTime_text, [sw-90, 20]) 
     
+    pygame.draw.circle(screen, (255,255,255), loc_ship, size_ship, 4)
     x = loc_ship[0] - img_width/2
     y = loc_ship[1] - img_height/2
-    
-    collision_check(loc_rock, size_rock, loc_ship, size_ship)
     screen.blit(imgShuttle, (x,y))
     
     pygame.display.update()
