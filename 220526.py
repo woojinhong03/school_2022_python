@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+
+#필요한 패키지 임포트
 import sys, pygame, time
 
+#창 제목 설정
 pygame.init()
 pygame.display.set_caption('Space')
+
 
 sw = 640
 sh = 480
@@ -22,25 +26,25 @@ startTime = time.time()
 loc_ship = [sw/2,sh/2]
 size_ship = 25
 
-loc_rock = [[210,210],
-            [210,210],
-            [430,160],
-            [210,210],
-            [210,210]]
+loc_rock = [[200,200],
+            [200,200],
+            [200,200],
+            [200,200],
+            [200,200]]
 
-vel=[[5,5],
-    [5,-5],
-    [-5,-5],
-    [-5,5],
-    [4,-4]]
+vel=[[-5,5],
+    [8,-5],
+    [-7,-5],
+    [-5,8],
+    [7,-2]]
 
 size_rock = 10
 
 myFont = pygame.font.SysFont("arial",30,True,False)
 
 def collision_check(loc_rock,size_rock,loc_ship,size_ship):
-    dist_x = loc_rock[0][0] - loc_ship[0]
-    dist_y = loc_rock[1][1] - loc_ship[1]
+    dist_x = loc_rock[0] - loc_ship[0]
+    dist_y = loc_rock[1] - loc_ship[1]
     dist = (dist_x**2 + dist_y**2)**(0.5)
     
     if dist < (size_rock + size_ship):
@@ -55,9 +59,7 @@ while True:
     screen.fill((0,0,0))
     
     for i in range(len(loc_rock)):
-        pygame.draw.circle(screen, 	(234, 215, 42), loc_rock[i], size_rock,2)
-        x = loc_rock[i][0] - img_width/2
-        y = loc_rock[i][1] - img_height/2
+        pygame.draw.circle(screen,(0, 255, 0), loc_rock[i], size_rock,2)
     
     for i in range(len(loc_rock)):
 
@@ -76,18 +78,17 @@ while True:
         if loc_rock[i][1] <= 0:
             vel[i][1] = -vel[i][1]
         
-        collision_check(loc_rock, size_rock, loc_ship, size_ship)
+        collision_check(loc_rock[i], size_rock, loc_ship, size_ship)    
     
     keys = pygame.key.get_pressed()
-    
     if keys[pygame.K_LEFT]:
-        loc_ship[0] -= 3
+        loc_ship[0] -= 5
     if keys[pygame.K_RIGHT]:
-        loc_ship[0] += 3
+        loc_ship[0] += 5
     if keys[pygame.K_UP]:
-        loc_ship[1] -= 3
+        loc_ship[1] -= 5
     if keys[pygame.K_DOWN]:
-        loc_ship[1] += 3
+        loc_ship[1] += 5
     if keys[pygame.K_q]:
         pygame.quit()
         sys.exit()
