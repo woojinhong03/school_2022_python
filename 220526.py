@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu May 26 13:46:26 2022
-
-@author: wooji
-"""
-
-import sys, pygame
-
-sw = 640
-sh = 480
+import sys, pygame, time
 
 pygame.init()
 pygame.display.set_caption('Space')
+
+sw = 640
+sh = 480
 
 screen = pygame.display.set_mode((sw, sh))
 
@@ -20,6 +14,7 @@ img_width = imgShuttle.get_width()
 img_height = imgShuttle.get_height()
 
 clock = pygame.time.Clock()
+startTime = time.time()
 
 loc_rock = [100,100]
 size_rock = 10
