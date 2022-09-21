@@ -61,7 +61,7 @@ turtle.bye()
 #%%
 
 from PIL import Image
-image = Image.open('Desktop/school/python/school_2022_python/pet02.gif')
+image = Image.open('C:/Users/wooji/Desktop/school/python/school_2022_python/pet02.gif')
 photo = image.convert('RGB')
 
 photoAry=[]
